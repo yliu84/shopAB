@@ -8,6 +8,11 @@ const cloudinary = require('cloudinary');
 exports.newProduct = catchAsyncErrors(async (req, res, next) => {
 
     let images = [];
+
+    if(Number(req.body.stock) < 0 || !Number.isInteger(req.body.stock)){
+        return next(new ErrorHandler('The stock number must be greater than 0', 400));
+    }
+
     if(typeof req.body.images === 'string'){
         images.push(req.body.images);
     }else{
@@ -102,6 +107,11 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     }
 
     let images = [];
+
+    if(Number(req.body.stock) < 0 || !Number.isInteger(req.body.stock)){
+        return next(new ErrorHandler('The stock number must be greater than 0', 400));
+    }
+
     if(typeof req.body.images === 'string'){
         images.push(req.body.images);
     }else{
