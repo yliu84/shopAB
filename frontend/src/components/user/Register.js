@@ -16,7 +16,7 @@ const Register = ({history}) => {
 
     const {name, email, password} = user;
 
-    const [avatar, setAvatar] = useState('');
+    const [avatar, setAvatar] = useState('/images/default_avatar.jpg');
     const [avatarPreview, setAvatarPreview] = useState('/images/default_avatar.jpg');
 
     const alert = useAlert();
@@ -44,8 +44,6 @@ const Register = ({history}) => {
         formData.set('email', email);
         formData.set('password', password);
         formData.set('avatar', avatar);
-
-        console.log(formData);
 
         dispatch(register(formData));
     };

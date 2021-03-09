@@ -9,7 +9,7 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
 
     let images = [];
 
-    if(Number(req.body.stock) < 0 || !Number.isInteger(req.body.stock)){
+    if(Number(req.body.stock) < 0 || !Number.isInteger(Number(req.body.stock))){
         return next(new ErrorHandler('The stock number must be greater than 0', 400));
     }
 
@@ -108,7 +108,7 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
 
     let images = [];
 
-    if(Number(req.body.stock) < 0 || !Number.isInteger(req.body.stock)){
+    if(Number(req.body.stock) < 0 || !Number.isInteger(Number(req.body.stock))){
         return next(new ErrorHandler('The stock number must be greater than 0', 400));
     }
 
